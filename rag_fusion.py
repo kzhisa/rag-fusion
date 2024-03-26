@@ -9,6 +9,7 @@ from operator import itemgetter
 from dotenv import load_dotenv
 from langchain.load import dumps, loads
 from langchain_community.document_loaders import WebBaseLoader
+from langchain_community.document_loaders.wikipedia import WikipediaLoader
 from langchain_community.vectorstores import Chroma
 from langchain_core.documents.base import Document
 from langchain_core.output_parsers import StrOutputParser
@@ -38,12 +39,12 @@ load_dotenv()
 os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
 
 # Template
-my_template_jp = """以下の[情報]だけを用いて、[質問]に回答してください。質問に回答するための[情報]がない場合には、無理に回答しないでください。
+my_template_jp = """Please answer the [question] using only the following [information] in Japanese. If there is no [information] available to answer the question, do not force an answer.
 
-情報: {context}
+Information: {context}
 
-質問: {question}
-最終的な回答:"""
+Question: {question}
+Final answer:"""
 
 
 
@@ -59,6 +60,7 @@ def load_and_split_document(url: str) -> list[Document]:
 
     # Read the Wep documents from 'url'
     raw_documents = WebBaseLoader(url).load()
+
     # Define chunking strategy
     text_splitter = TokenTextSplitter(chunk_size=2048, chunk_overlap=24)
     # Split the documents
@@ -66,7 +68,7 @@ def load_and_split_document(url: str) -> list[Document]:
 
     # for TEST
     print("Original document: ", len(documents), " docs")
-        
+
     return documents
 
 

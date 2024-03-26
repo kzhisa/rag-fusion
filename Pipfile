@@ -10,6 +10,7 @@ python-dotenv = "*"
 langchain-community = "*"
 langchain = "*"
 chromadb = "*"
+wikipedia = "*"
 
 [dev-packages]
 
