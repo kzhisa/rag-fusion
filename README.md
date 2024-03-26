@@ -1,6 +1,6 @@
 ## RAG Fusion with RRF Sample
 
-This repository provides a sample program for RAG Fusion using the Retriever-Reader Framework (RRF). RAG (Retrieval-Augmented Generation) techniques enhance tasks such as question answering and text generation by retrieving information from extensive text data and using it for generation. This sample specifically utilizes RRF to aim for more efficient information retrieval and integration.
+This repository provides a sample program for RAG Fusion using the Reciprocal Rank Fusion (RRF). RAG (Retrieval-Augmented Generation) techniques enhance tasks such as question answering and text generation by retrieving information from extensive text data and using it for generation. This sample specifically utilizes RRF to aim for more efficient information retrieval and integration.
 
 ### Prerequisites
 
